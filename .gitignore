@@ -1,0 +1,443 @@
+# .gitignore 
+# Public development repository - NO private data should ever be committed
+
+
+# Logs may contain private information from queries
+*.log
+logs/
+*.log.*
+
+
+# =============================================================================
+# Environment & Secrets
+# =============================================================================
+# Environment files with API keys
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# API keys and secrets
+secrets/
+*.key
+*.pem
+*.secret
+
+
+# =============================================================================
+# Python / Backend
+# =============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+
+# =============================================================================
+# Node.js / Frontend
+# =============================================================================
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production build
+/build
+/dist
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+
+# =============================================================================
+# IDEs and Editors
+# =============================================================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# JetBrains
+.idea/
+*.iml
+out/
+
+
+# =============================================================================
+# Operating Systems
+# =============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
+
+
+# =============================================================================
+# Databases
+# =============================================================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# PostgreSQL
+*.pgpass
+
+# Redis
+dump.rdb
+
+
+# =============================================================================
+# Temporary & Cache Files
+# =============================================================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+temp/
+
+
+# =============================================================================
+# Docker (for when you add it later)
+# =============================================================================
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Docker volumes (might contain private data)
+/volumes/
+
+
+# =============================================================================
+# Cloud & Deployment
+# =============================================================================
+# AWS
+.aws/
+*.pem
+
+# Google Cloud
+.gcloud/
+*-credentials.json
+*-service-account.json
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+
+# =============================================================================
+# Monitoring & Analytics
+# =============================================================================
+# LangSmith
+.langsmith/
+
+
+# =============================================================================
+# Documentation Build Artifacts
+# =============================================================================
+# Sphinx
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# MkDocs
+site/
+
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+# Custom uploads directory (if you add file upload feature)
+/uploads/
+
+# Generated reports
+/reports/
+*.pdf
+*.docx
+*.xlsx
+
+# Test outputs
+/test-outputs/
+
+# Backup files
+*.backup
+*.bak
+*-backup/
+
+# Development database dumps
+*.dump
+*.sql
+
+
+# =============================================================================
+# AI/ML Specific
+# =============================================================================
+# Model files (if you download any)
+*.pt
+*.pth
+*.h5
+*.pkl
+*.pickle
+*.joblib
+
+# Datasets (redundant with data/ but explicit)
+/datasets/
+
+# Experiment tracking
+/mlruns/
+/wandb/
+
+
+# =============================================================================
+# KEEP THESE FILES (explicitly not ignored)
+# =============================================================================
+# These are safe to commit
+!.env.example
+!.gitignore
+!README.md
+!requirements.txt
+!package.json
+!docker-compose.yml.example
+!Dockerfile.example
+
+# Docker volumes (large, generated)
+postgres_data/
+vector_data/
+redis_data/
+EOF
+
+
+# =============================================================================
+# Additional Notes
+# =============================================================================
+# This .gitignore is designed for the PUBLIC repository (psychology-system)
+# 
+# Remember:
+# - NEVER commit files from psychology-data/ (private markdown files)
+# - NEVER commit .env with real API keys
+# - NEVER commit vectordb/ (contains embeddings of private data)
+# - NEVER commit logs (may contain query history)
+# 
+# If you accidentally commit private data:
+# 1. git rm --cached <file>
+# 2. Add to .gitignore
+# 3. git commit -m "Remove private data"
+# 4. Consider the data compromised - rotate API keys if exposed
+# 
+# For sensitive commits that were pushed:
+# - Use git filter-branch or BFG Repo-Cleaner
+# - Or create a fresh repository and copy only safe files
