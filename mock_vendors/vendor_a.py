@@ -14,9 +14,9 @@ async def infer(request: VendorRequest) -> VendorResponse:
 
     roll = random.random()
 
-    if roll < 0.2:
-        raise HTTPException(status_code=429, detail="Rate limit exceeded")
     if roll < 0.4:
+        raise HTTPException(status_code=429, detail="Rate limit exceeded")
+    if roll < 0.8:
         raise HTTPException(status_code=500, detail="Internal server error")
 
     return VendorResponse(

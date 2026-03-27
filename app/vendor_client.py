@@ -32,6 +32,12 @@ class VendorTimeoutError(VendorClientError):
         self.vendor_name = vendor_name
         super().__init__(f"{vendor_name} request timed out")
 
+class VendorConnectionError(VendorClientError):
+    def __init__(self, vendor_name: str, detail: str) -> None:
+        self.vendor_name = vendor_name
+        self.detail = detail
+        super().__init__(f"{vendor_name} connection failed: {detail}")
+
 
 async def call_vendor_once(
     vendor_name: str,
@@ -60,6 +66,10 @@ async def call_vendor_once(
 
     except httpx.TimeoutException as exc:
         raise VendorTimeoutError(vendor_name) from exc
+    except httpx.ConnectError as exc:
+        raise VendorConnectionError(vendor_name, str(exc)) from exc
+    except httpx.TimeoutException as exc:
+        raise VendorTimeoutError(vendor_name) from exc
 
 
 def is_retryable_error(error: Exception) -> bool:
@@ -72,6 +82,9 @@ def is_retryable_error(error: Exception) -> bool:
         if 500 <= error.status_code < 600:
             return True
         return False
+
+    if isinstance(error, VendorConnectionError):
+        return True
 
     if isinstance(error, VendorResponseFormatError):
         return False
@@ -89,6 +102,7 @@ async def call_vendor_with_retry(
 
     for attempt in range(max_retries + 1):
         try:
+            print(f"[retry] calling {vendor_name}, attempt={attempt + 1}")
             return await call_vendor_once(
                 vendor_name=vendor_name,
                 vendor_url=vendor_url,
@@ -96,6 +110,7 @@ async def call_vendor_with_retry(
             )
 
         except VendorClientError as error:
+            print(f"[retry] {vendor_name} failed on attempt {attempt + 1}: {error}")
             last_error = error
 
             if not is_retryable_error(error):
@@ -104,6 +119,7 @@ async def call_vendor_with_retry(
             if attempt == max_retries:
                 break
 
+            print(f"[retry] sleeping {sleep_time:.1f}s before retrying {vendor_name}")
             sleep_time = 0.5 * (2 ** attempt)
             await asyncio.sleep(sleep_time)
 
